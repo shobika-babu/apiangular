@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { HomeservicesService } from './services/homeservices.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'projectapi';
+  f_data:any;
+  constructor(private home:HomeservicesService){
+    this.home.getdata().subscribe(data=>this.f_data=data)
+  }
 }

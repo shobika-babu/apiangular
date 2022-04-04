@@ -343,15 +343,18 @@
           <th>Account-Balance</th>
         </thead>
         <tbody>
-          <tr *ngFor="let datas of f_data">
-            <td>{{datas.first }} {{datas.last}}</td>
+          <tr *ngFor="let datas of f_data | paginate: { itemsPerPage: 10, currentPage: p }">
+            <td>{{datas.first  }} {{datas.last}} </td>
             <td>{{datas.email}}</td>
             <td>{{datas.address}}</td>
             <td>{{datas.created | date:"yyyy/MMM/dd" }}</td>
-            <td>{{datas.balance}}</td>
+            <td>{{datas.balance | slice: 1}}</td>
           </tr>
         </tbody>
       </table>
+      <div class="text-right"> 
+        <pagination-controls (pageChange)="p = $event "></pagination-controls>
+      </div>
     </div>
   </div>
 </div>
